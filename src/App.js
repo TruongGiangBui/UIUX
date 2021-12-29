@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Menu from "./components/menu";
 import Navbar from "./components/navbar";
 import Dashboard from "./components/dashboard";
+import PurchasingRequest from "./components/PurchasingRequest/PurchasingRequest";
 
 function App(props) {
   return (
@@ -14,11 +15,13 @@ function App(props) {
         <div className="content">
           <Navbar></Navbar>
           <Switch>
-            
             <Route exact path="/dashboard">
               <Dashboard></Dashboard>
             </Route>
 
+            <Route exact path="/manage-purchasing-request">
+              <PurchasingRequest />
+            </Route>
           </Switch>
         </div>
       </div>
