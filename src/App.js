@@ -7,25 +7,30 @@ import Navbar from "./components/navbar";
 import Dashboard from "./components/dashboard";
 import PurchasingRequest from "./components/PurchasingRequest/PurchasingRequest";
 
+import DateAdapter from "@mui/lab/AdapterMoment";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+
 function App(props) {
   return (
-    <Router>
-      <div className="App">
-        <Menu></Menu>
-        <div className="content">
-          <Navbar></Navbar>
-          <Switch>
-            <Route exact path="/dashboard">
-              <Dashboard></Dashboard>
-            </Route>
+    <LocalizationProvider dateAdapter={DateAdapter}>
+      <Router>
+        <div className="App">
+          <Menu></Menu>
+          <div className="content">
+            <Navbar></Navbar>
+            <Switch>
+              <Route exact path="/dashboard">
+                <Dashboard></Dashboard>
+              </Route>
 
-            <Route exact path="/manage-purchasing-request">
-              <PurchasingRequest />
-            </Route>
-          </Switch>
+              <Route exact path="/manage-purchasing-request">
+                <PurchasingRequest />
+              </Route>
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </LocalizationProvider>
   );
 }
 export default App;

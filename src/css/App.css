@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
   display: flex;
 }
@@ -22,6 +22,6 @@
 .App-link {
   color: #09d3ac;
 }
-.content{
+.content {
   width: 100%;
 }
