@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
 import AddForm from "./Form/AddForm";
 import { Box, Button, Modal, Typography } from "@mui/material";
@@ -6,7 +6,7 @@ import { Box, Button, Modal, Typography } from "@mui/material";
 import "./style/purchasingRequest.css";
 import Search from "./Search";
 
-const data = {
+const dataa = {
   header: [
     "Mã phiếu đề nghị",
     "Mã lệnh sản xuất",
@@ -24,6 +24,13 @@ const data = {
       ngaytao: "30-10-2021",
       ngaynhan: "04-12-2021",
       trangthai: "Chưa xử lý",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211123.106408",
+      hang: "Cao su",
+      soluong: 10,
+      donvicungcap: "Công ty Gomu Gomu",
+      baogia: 10000000,
+      donvi: "Thùng",
     },
     {
       maphieu: "PDN20211207.112715",
@@ -32,6 +39,13 @@ const data = {
       ngaytao: "07-12-2021",
       ngaynhan: "07-12-2021",
       trangthai: "Chưa xử lý",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211123.692089",
+      hang: "Sắt",
+      soluong: 15,
+      donvicungcap: "Công ty Ironman",
+      baogia: 2000000,
+      donvi: "Kilogam",
     },
     {
       maphieu: "PDN20211127.172913",
@@ -40,6 +54,13 @@ const data = {
       ngaytao: "27-11-2021",
       ngaynhan: "29-11-2021",
       trangthai: "Chưa xử lý",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211112.106933",
+      hang: "Cacbon",
+      soluong: 1000,
+      donvicungcap: "Công ty Cacbon",
+      baogia: 1000000,
+      donvi: "Gam",
     },
     {
       maphieu: "PDN20211116.260709",
@@ -48,6 +69,13 @@ const data = {
       ngaytao: "16-11-2021",
       ngaynhan: "17-11-2021",
       trangthai: "Đã hủy",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211123.692089",
+      hang: "Sắt",
+      soluong: 50,
+      donvicungcap: "Công ty Tony",
+      baogia: 5000000,
+      donvi: "Kilogam",
     },
     {
       maphieu: "PDN20211130.244784",
@@ -56,6 +84,13 @@ const data = {
       ngaytao: "30-10-2021",
       ngaynhan: "04-12-2021",
       trangthai: "Chưa xử lý",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211112.106933",
+      hang: "Cacbon",
+      soluong: 1000,
+      donvicungcap: "Công ty",
+      baogia: 1000000,
+      donvi: "Gam",
     },
     {
       maphieu: "PDN20211207.112715",
@@ -64,6 +99,13 @@ const data = {
       ngaytao: "07-12-2021",
       ngaynhan: "07-12-2021",
       trangthai: "Chưa xử lý",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211123.106408",
+      hang: "Cao su",
+      soluong: 50,
+      donvicungcap: "Công ty",
+      baogia: 15000000,
+      donvi: "Thùng",
     },
     {
       maphieu: "PDN20211127.172913",
@@ -72,6 +114,13 @@ const data = {
       ngaytao: "27-11-2021",
       ngaynhan: "29-11-2021",
       trangthai: "Chưa xử lý",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211123.106408",
+      hang: "Cao su",
+      soluong: 10,
+      donvicungcap: "Công ty",
+      baogia: 4000000,
+      donvi: "Thùng",
     },
     {
       maphieu: "PDN20211116.260709",
@@ -80,14 +129,24 @@ const data = {
       ngaytao: "16-11-2021",
       ngaynhan: "17-11-2021",
       trangthai: "Đã hủy",
+      mota: "Phiếu đề nghị mua hàng",
+      mahang: "HH20211123.692089",
+      hang: "Sắt",
+      soluong: 10,
+      donvicungcap: "Công ty Tony",
+      baogia: 1500000,
+      donvi: "Kilogam",
     },
   ],
 };
 
 const PurchasingRequest = () => {
+  const [data, setData] = useState(dataa);
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleAdd = (i) => setData({ ...data, row: [i, ...data.row] });
 
   return (
     <div className="purchase-content-wrapper">
@@ -125,7 +184,7 @@ const PurchasingRequest = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <AddForm onClose={handleClose} open={open} />
+        <AddForm onClose={handleClose} open={open} onAdd={handleAdd} />
       </Modal>
     </div>
   );

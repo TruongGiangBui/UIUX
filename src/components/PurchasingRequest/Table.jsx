@@ -4,10 +4,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import CancelIcon from "@mui/icons-material/Cancel";
 
 import "./style/table.css";
-import { Box, Pagination, Stack } from "@mui/material";
+import { Box, Modal, Pagination, Stack } from "@mui/material";
+import DetailRequest from "./DetailRequest/DetailRequest";
 
 const Table = (props) => {
   const data = props.data;
+
+  const [open, setOpen] = React.useState(false);
+  const [detail, setDetail] = React.useState({});
+  const handleOpen = (v) => {
+    setDetail(v);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
 
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {
@@ -52,6 +61,7 @@ const Table = (props) => {
                       cursor: "pointer",
                       margin: "0 2px",
                     }}
+                    onClick={(e) => handleOpen(v)}
                   />
                   <EditIcon
                     style={{
@@ -83,6 +93,14 @@ const Table = (props) => {
           />
         </Stack>
       </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <DetailRequest onClose={handleClose} open={open} data={detail} />
+      </Modal>
     </>
   );
 };
