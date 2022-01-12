@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Menu from "./components/menu";
 import Navbar from "./components/navbar";
 import Dashboard from "./components/dashboard";
-
+import 'antd/dist/antd.css';
+import ProductManager from "./components/Product-manage";
 function App(props) {
   return (
     <Router>
@@ -18,7 +19,9 @@ function App(props) {
             <Route exact path="/dashboard">
               <Dashboard></Dashboard>
             </Route>
-
+            <Route exact path="/manage-work-schedule">
+              <ProductManager/>
+            </Route>
           </Switch>
         </div>
       </div>
