@@ -8,10 +8,16 @@ const AddProduct = ({
   setHang: setTenhang,
   soluong,
   setSoluong,
+  isValidSoluong,
+  setIsValidSoluong,
   donvicungcap,
   setDonvicungcap,
+  isValidDonvicungcap,
+  setIsValidDonvicungcap,
   baogia,
   setBaogia,
+  isValidBaogia,
+  setIsValidBaogia,
   donvi,
   setDonvi,
 }) => {
@@ -70,8 +76,14 @@ const AddProduct = ({
         placeholder="100"
         onChange={(e) => {
           setSoluong(e.target.value);
+          setIsValidSoluong(true);
         }}
       />
+      {!isValidSoluong && (
+        <p style={{ color: "#f00", marginTop: "5px" }}>
+          Số lượng phải là một số
+        </p>
+      )}
 
       <label
         style={{ display: "block", marginBottom: "5px", marginTop: "16px" }}
@@ -82,8 +94,16 @@ const AddProduct = ({
         className="hienInput"
         value={donvicungcap}
         placeholder="Công ty X"
-        onChange={(e) => setDonvicungcap(e.target.value)}
+        onChange={(e) => {
+          setDonvicungcap(e.target.value);
+          setIsValidDonvicungcap(true);
+        }}
       />
+      {!isValidDonvicungcap && (
+        <p style={{ color: "#f00", marginTop: "5px" }}>
+          Đơn vị cung cấp không được để trống
+        </p>
+      )}
 
       <label
         style={{ display: "block", marginBottom: "5px", marginTop: "16px" }}
@@ -95,8 +115,16 @@ const AddProduct = ({
         type="number"
         value={baogia}
         placeholder="1500000"
-        onChange={(e) => setBaogia(e.target.value)}
+        onChange={(e) => {
+          setBaogia(e.target.value);
+          setIsValidBaogia(true);
+        }}
       />
+      {!isValidBaogia && (
+        <p style={{ color: "#f00", marginTop: "5px" }}>
+          Báo giá phải là một số
+        </p>
+      )}
     </div>
   );
 };

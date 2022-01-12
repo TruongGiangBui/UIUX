@@ -20,22 +20,57 @@ const style = {
 };
 
 const AddForm = ({ onClose, open, onAdd }) => {
-  const [maphieu, setMaphieu] = useState();
-  const [ngaynhan, setNgaynhan] = useState();
-  const [mota, setMota] = useState();
+  const [maphieu, setMaphieu] = useState("");
+  const [ngaynhan, setNgaynhan] = useState("");
+  const [mota, setMota] = useState("");
   const [hang, setHang] = useState("Cao su");
-  const [soluong, setSoluong] = useState();
-  const [donvicungcap, setDonvicungcap] = useState();
-  const [baogia, setBaogia] = useState();
+  const [soluong, setSoluong] = useState("");
+  const [donvicungcap, setDonvicungcap] = useState("");
+  const [baogia, setBaogia] = useState("");
   const [mahang, setMahang] = useState("HH20211123.106408");
   const [donvi, setDonvi] = useState("Thùng");
+
+  const [isValidNgaynhan, setIsValidNgaynhan] = useState(true);
+  const [isValidMota, setIsValidMota] = useState(true);
+  const [isValidSoluong, setIsValidSoluong] = useState(true);
+  const [isValidDonvicungcap, setIsValidDonvicungcap] = useState(true);
+  const [isValidBaogia, setIsValidBaogia] = useState(true);
 
   useEffect(() => {
     let r = Math.floor(Math.random() * 900000) + 100000;
     setMaphieu("PDN" + moment().format("YYYYMMDD") + "." + r);
   }, [open]);
 
+  const isValid = () => {
+    const dateReg = /^\d{1,2}-\d{1,2}-\d{4}$/;
+    const soluongReg = /^\d{1,10}$/;
+    const baogiaReg = /^\d{1,15}$/;
+    let valid = true;
+    if (!ngaynhan.match(dateReg)) {
+      setIsValidNgaynhan(false);
+      valid = false;
+    }
+    if (mota.trim().length == 0) {
+      setIsValidMota(false);
+      valid = false;
+    }
+    if (!soluong.match(soluongReg)) {
+      setIsValidSoluong(false);
+      valid = false;
+    }
+    if (donvicungcap.trim().length == 0) {
+      setIsValidDonvicungcap(false);
+      valid = false;
+    }
+    if (!baogia.match(baogiaReg)) {
+      setIsValidBaogia(false);
+      valid = false;
+    }
+    return valid;
+  };
+
   const handleSave = () => {
+    if (!isValid()) return;
     onAdd({
       maphieu: maphieu,
       malenh: "",
@@ -95,8 +130,16 @@ const AddForm = ({ onClose, open, onAdd }) => {
             className="hienInput"
             placeholder="dd-mm-yyyy"
             value={ngaynhan}
-            onChange={(e) => setNgaynhan(e.target.value)}
+            onChange={(e) => {
+              setIsValidNgaynhan(true);
+              setNgaynhan(e.target.value);
+            }}
           />
+          {!isValidNgaynhan && (
+            <p style={{ color: "#f00", marginTop: "5px" }}>
+              Ngày nhập không hợp lệ (dd-mm-yyyy) VD: 15-01-2022
+            </p>
+          )}
 
           <label
             style={{ display: "block", marginBottom: "5px", marginTop: "16px" }}
@@ -106,8 +149,16 @@ const AddForm = ({ onClose, open, onAdd }) => {
           <input
             className="hienInput"
             value={mota}
-            onChange={(e) => setMota(e.target.value)}
+            onChange={(e) => {
+              setMota(e.target.value);
+              setIsValidMota(true);
+            }}
           />
+          {!isValidMota && (
+            <p style={{ color: "#f00", marginTop: "5px" }}>
+              Mô tả không được để trống
+            </p>
+          )}
 
           <AddProduct
             mahang={mahang}
@@ -116,10 +167,16 @@ const AddForm = ({ onClose, open, onAdd }) => {
             setHang={setHang}
             soluong={soluong}
             setSoluong={setSoluong}
+            isValidSoluong={isValidSoluong}
+            setIsValidSoluong={setIsValidSoluong}
             donvicungcap={donvicungcap}
             setDonvicungcap={setDonvicungcap}
+            isValidDonvicungcap={isValidDonvicungcap}
+            setIsValidDonvicungcap={setIsValidDonvicungcap}
             baogia={baogia}
             setBaogia={setBaogia}
+            isValidBaogia={isValidBaogia}
+            setIsValidBaogia={setIsValidBaogia}
             donvi={donvi}
             setDonvi={setDonvi}
           />
