@@ -11,7 +11,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 900,
+  width: 1000,
   bgcolor: "background.paper",
   border: "1px solid #000",
   boxShadow: 24,
@@ -114,7 +114,10 @@ const AddForm = ({ onClose, open, onAdd }) => {
         </IconButton>
       </Box>
 
-      <Box className="bodyAddForm">
+      <Box
+        className="bodyAddForm"
+        sx={{ maxHeight: "700px", overflowY: "scroll", padding: "0 20px" }}
+      >
         <form>
           <label style={{ display: "block", marginBottom: "5px" }}>
             Mã phiếu đề nghị mua hàng<span style={{ color: "#f00" }}> *</span>
@@ -183,7 +186,13 @@ const AddForm = ({ onClose, open, onAdd }) => {
         </form>
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "20px",
+        }}
+      >
         <Typography color="error">
           ( * ) : Các trường thông tin bắt buộc
         </Typography>
