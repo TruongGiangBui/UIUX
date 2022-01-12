@@ -6,6 +6,7 @@ import Menu from "./components/menu";
 import Navbar from "./components/navbar";
 import Dashboard from "./components/dashboard";
 import PurchasingRequest from "./components/PurchasingRequest/PurchasingRequest";
+import ManageManufacturingPlan from "./components/ManageManufacturingPlan/ManageManufacturingPlan"
 
 import DateAdapter from "@mui/lab/AdapterMoment";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
@@ -25,6 +26,9 @@ function App(props) {
 
               <Route exact path="/manage-purchasing-request">
                 <PurchasingRequest />
+              </Route>
+              <Route exact path="/manage-manufacturing-plan">
+                <ManageManufacturingPlan />
               </Route>
             </Switch>
           </div>
