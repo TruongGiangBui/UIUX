@@ -15,7 +15,7 @@ const Dashboard = (props) => {
   </div>
 </div>
 
-        <img src="http://localhost:3000/dashboard.png" alt="" srcset="" />
+        <img src="https://uiux-xi.vercel.app/dashboard.png" alt="" srcset="" />
     </div>
   );
 };
