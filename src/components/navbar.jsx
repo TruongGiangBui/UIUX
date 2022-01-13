@@ -4,7 +4,7 @@ const Navbar = (props) => {
 
   return (
     <div className="navbar">
-        <img style={{"width":"100%"}} src="ttps://uiux-xi.vercel.app/nav.png" alt="" srcset="" />
+        <img style={{"width":"100%"}} src="https://uiux-xi.vercel.app/nav.png" alt="" srcset="" />
     </div>
   );
 };
