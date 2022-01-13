@@ -1,8 +1,4 @@
-import "../css/menu.scss";
-import { Link } from "react-router-dom";
-import Dropdown from "./subcomponents/dropdown";
-const Menu = (props) => {
-  const data=[
+[
     {
         "id": 0,
         "name": "Trang chủ",
@@ -202,15 +198,15 @@ const Menu = (props) => {
         "name": "Quản lý sản xuất",
         "child": [
             {
-                "url": "/dashboard",
+                "url": "/",
                 "name": " Dashboard Quản lý sản xuất"
             },
             {
-                "url": "/manage-manufacturing-plan",
+                "url": "/manage-work-schedule",
                 "name": " Quản lý kế hoạch sản xuất"
             },
             {
-                "url": "/",
+                "url": "/manage-manufacturing-plan",
                 "name": "Quản lý lệnh sản xuất"
             },
             {
@@ -254,17 +250,4 @@ const Menu = (props) => {
             }
         ]
     }
-];
-  return (
-    <div className="menu">
-      <div className="app_name">DX workplace</div>
-      <img src="http://localhost:3000/avt.png" alt="" srcset="" />
-      {
-            data.map((menu) => (
-              <Dropdown menu={menu}></Dropdown>    
-            ))
-          }
-    </div>
-  );
-};
-export default Menu;
+]
