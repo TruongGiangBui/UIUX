@@ -10,8 +10,8 @@ const Schedule = () => {
     {
       code: "MX001",
       name: "UIUX06",
-      start_time: "1 giờ",
-      end_time: "1 giờ",
+      start_time: "10 giờ",
+      end_time: "16 giờ",
     },
   ]);
   const [timeHT, setTimeHT] = useState({
@@ -101,7 +101,10 @@ const Schedule = () => {
             onCancel={handleCancel}
           >
             <p>Xưởng sản xuất</p>
-            <Input value="UIUX06" size="large" />
+            <select class="form-select" aria-label="Default select example">
+              <option value="UIUX06" selected>UIUX06</option>
+              <option value="UIUX07">UIUX07</option>
+            </select>
             <p>Tháng</p>
             <Input value="12/2022" size="large" />
             <Radio.Group
