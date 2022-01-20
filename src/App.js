@@ -17,7 +17,7 @@ function App(props) {
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <Router>
-        <div className="App">
+        <div className="App" style={{backgroundColor:"#f4f6f9"}}>
           <Menu></Menu>
           <div className="content">
             <Navbar></Navbar>
